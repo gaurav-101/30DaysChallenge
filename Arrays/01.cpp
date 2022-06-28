@@ -9,3 +9,19 @@ string reverseWord(string str){
     cout<<str[0];
   //Your code here
 }
+
+//Method 2 Using Two Pointers
+
+string reverseWord(string str){
+    int i=0;
+    int j=str.length()-1;
+    while(i<j){
+        char temp=str[i];
+        str[i]=str[j];
+        str[j]=temp;
+        i++;
+        j--;
+    }
+    return str;
+  //Your code here
+}
