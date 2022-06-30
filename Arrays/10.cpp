@@ -13,7 +13,7 @@ int minJumps(int arr[], int n){
         
         if(i==current){
             //When we encounter zero on middle index and we can't move forward
-            if(current==i){
+            if(farthest==i){
                 return -1;
             }
             
