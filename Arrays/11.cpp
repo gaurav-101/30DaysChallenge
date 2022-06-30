@@ -1,3 +1,12 @@
+
+
+
+
+
+//Method-2 make frequency array
+//TC-O(n)  SC-O(n)
+
+
 // Method-1 O(nlogn)
 
 int findDuplicate(vector<int>& nums) {
