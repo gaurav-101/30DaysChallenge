@@ -1,21 +1,33 @@
-void nextPermutation(vector<int>& a) {
-    int n=a.size();
-    int i,j;
-    for(int i=n-2;i>=0;i--){
-        if(a[i]<a[i+1]){
+void nextPermutation(vector<int>& nums) {
+    if(nums.size()==1){
+        return;
+    }
+    
+    
+    int idx1;
+    for(int i=nums.size()-2;i>=0;i--){
+        if(nums[i]<nums[i+1]){
+            idx1=i;
             break;
         }
     }
-    if(i<0){
-        reverse(a.begin(), a.end());
-    }
-    else{
-        for(int j=n-1;j>i;j--){
-            if(a[j]>a[i]){
+    
+    if(idx1<0){
+        reverse(nums.begin(),nums.end());
+    }else{
+        
+        int idx2=0;
+        for(int i=nums.size()-1;i>=0;i--){
+            if(nums[i]>nums[idx1]){
+                idx2=i;
                 break;
             }
         }
-        swap(a[i],a[j]);
-        reverse(a.begin() + i +1, a.end());
+    
+        swap(nums[idx1],nums[idx2]);
+        
+        sort(nums.begin()+idx1+1,nums.end());
+        
+        
     }
 }
