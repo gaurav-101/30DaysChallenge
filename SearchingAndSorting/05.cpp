@@ -1,0 +1,1 @@
+// Easy Use min max only
