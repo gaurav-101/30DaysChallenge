@@ -18,14 +18,3 @@ long long int floorSqrt(long long int x)
     }
     return ans;
 }
-
-// Question 2
-int countSquares(int N) {
-    int ans=0;
-    for(int i=1;i*i<=N;i++){
-        if(i*i < N){
-            ans++;
-        }
-    }
-    return ans;
-}
