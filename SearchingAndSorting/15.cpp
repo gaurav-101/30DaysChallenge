@@ -1,30 +1,22 @@
-vector<long long int> productExceptSelf(vector<long long int>& nums, int n) {
-    vector<long long int> ans;
-    long long int product=1;
-    int count=0;
+ll findSubarray(vector<ll> arr, int n ) {
+    map<ll,int> m;
+    int sum=0;
+    ll ans=0;
+    m[sum]=1;
     for(int i=0;i<n;i++){
-        if(nums[i]==0){
-            count++;
+        sum+=arr[i];
+        if (m.find(sum) == m.end()) {
+            m[sum] = 1;
         }
-        else{
-            product*= nums[i];
+    
+        else {
+            m[sum]++;
         }
+        
     }
-    for(int i=0;i<n;i++){
-        if(count>1){
-            ans.push_back(0);
-        }
-        else if(count==1){
-            if(nums[i]==0){
-                ans.push_back(product);
-            }
-            else{
-                ans.push_back(0);
-            }
-        }
-        else{
-            ans.push_back(product/nums[i]);
-        }
+    map<ll, int>::iterator itr;
+    for (itr = m.begin(); itr != m.end(); ++itr) {
+        ans+= ((itr->second)*(itr->second -1))/2;
     }
     return ans;
 }
