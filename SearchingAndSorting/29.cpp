@@ -1,15 +1,26 @@
+void solve(int i,int j,int n,int &ans){
+    if(i>j){
+        return;
+    }
+    int mid=(i+j)/2;
+    int count=0;
+    int temp=mid/5;
+    while(temp>0){
+        count+=temp;
+        temp/=5;
+    }
+    if(count>=n){
+        ans=mid;
+        solve(i,mid-1,n,ans);
+    }
+    else{
+        solve(mid+1,j,n,ans);
+    }
+}
 int findNum(int n)
 {
-    int count5=0;
-    for(int i=0;i<=n;i++){
-        int temp=i*5;
-        while(temp%5==0 and temp>0){
-            count5++;
-            temp/=5;
-        }
-        if(count5>=n){
-            return i*5;
-        }
-    }
-    return -1;
+    int ans;
+    
+    solve(0,n*5,n,ans);
+    return ans;
 }
