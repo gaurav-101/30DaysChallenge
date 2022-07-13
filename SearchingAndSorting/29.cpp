@@ -1,3 +1,4 @@
+// Study with saumya
 void solve(int i,int j,int n,int &ans){
     if(i>j){
         return;
