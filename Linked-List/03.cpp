@@ -1,3 +1,18 @@
+//without using extra space
+bool detectLoop(Node* head)
+{
+    Node* high=head;
+    Node* low=head;
+    while(high!=NULL and high->next != NULL){
+        high=high->next->next;
+        low=low->next;
+        if(high==low){
+            return true;
+        }
+    }
+    return false;
+}
+
 // Using map and linear iterate
 bool detectLoop(Node* head)
 {
