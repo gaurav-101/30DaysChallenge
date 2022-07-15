@@ -10,7 +10,7 @@ void removeLoop(Node* head)
         }
     }
     high=head;
-    //exception when low==high = head
+    //exception when low==high = head (when itersection is on head)
     if(low==head){
         while(high!=NULL){
             if((high->next)==(low)){
