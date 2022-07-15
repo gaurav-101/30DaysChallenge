@@ -1,4 +1,4 @@
-Node* detectAndRemoveLoop(Node* head)
+Node* firstNodeofLoop(Node* head)
 {
     // If list is empty or has only one node
     // without loop
