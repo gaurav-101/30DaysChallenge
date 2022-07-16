@@ -1,14 +1,14 @@
 Node * segregateOddEven (Node * head)
 {
     Node * curr=head;
-    Node * oddHead;
-    Node * oddTail;
-    Node * evenHead;
-    Node * evenTail;
+    Node * oddHead=NULL;
+    Node * oddTail=NULL;
+    Node * evenHead=NULL;
+    Node * evenTail=NULL;
     int i=1,j=1;
     while(curr!=NULL){
         if(curr->data % 2 ==1){
-            if(i==1){
+            if(oddHead == NULL){
                 oddHead=curr;
                 oddTail=oddHead;
             }
@@ -19,7 +19,7 @@ Node * segregateOddEven (Node * head)
             i++;
         }
         else{
-            if(j==1){
+            if(evenHead == NULL){
                 evenHead=curr;
                 evenTail=evenHead;
             }
@@ -31,6 +31,11 @@ Node * segregateOddEven (Node * head)
         }
         curr=curr->next;
     }
+    if (oddHead == NULL)
+        return evenHead;
+    if(evenHead == NULL)
+        return oddHead;
+    
     evenTail->next=NULL;
     oddTail->next=evenHead;
     return oddHead;
