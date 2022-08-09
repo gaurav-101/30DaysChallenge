@@ -48,3 +48,55 @@ Node *deleteNode(Node *root, int x) {
     return solve(root,x);
     
 }
+
+//Method 2
+Node* maxVal(Node* root){
+    Node* temp = root;
+    while(temp->right!=NULL){
+        temp=temp->right;
+    }
+    return temp;
+}
+
+Node* solve (Node* root, int x){
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->data==x){
+        if(root->right==NULL and root->left==NULL){
+            delete root;
+            return NULL;
+        }
+        else if(root->right==NULL){
+            Node* temp=root->left;
+            delete root;
+            return temp;
+        }
+        else if(root->left==NULL){
+            Node* temp=root->right;
+            delete root;
+            return temp;
+        }
+        else{
+            int maxi=maxVal(root->left)->data;
+            root->data=maxi;
+            root->left=solve(root->left,maxi);
+            return root;
+        }
+    }
+    
+    else if(root->data>x){
+        root->left= solve(root->left,x);
+        return root;
+    } 
+    else{
+        root->right= solve(root->right,x);
+        return root;
+    } 
+}
+
+Node *deleteNode(Node *root, int x) {
+    Node* temp=root;
+    return solve(root,x);
+    
+}
