@@ -1,3 +1,5 @@
+//method 1
+// O(m+n) O(m+n)
 void inorder(TreeNode<int>* root, vector<TreeNode<int>*>& a){
     if(root==NULL) return;
     inorder(root->left,a);
