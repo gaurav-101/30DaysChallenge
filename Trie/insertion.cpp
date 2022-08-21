@@ -74,5 +74,9 @@ int main(){
     Trie* t=new Trie();
     t->insertWord("abcde");
     cout<<t->searchWord("abcde");
+    TrieNode* temp=t->root;
+    while(temp->children.size()==1){
+        
+    }
     return 0;
 }
