@@ -39,17 +39,40 @@ class Trie{
             else{
                 child=root->children[index];
             }
-            insertUtil(root, word.substr(1));
+            insertUtil(child, word.substr(1));
         }
 
         void insertWord(string word){
             insertUtil(root,word);
+        }
+
+
+        bool searchUtil(TrieNode* root, string word){
+            //base case
+            if(word.size()==0){
+                return root->isTerminal;
+            }
+            int index=word[0]-'a';
+            TrieNode* child;
+            //Present
+            if(root->children[index]!=NULL){
+                child=root->children[index];
+            }
+            //Absent
+            else{
+                return false;
+            }
+            //recursion
+            return searchUtil(child, word.substr(1));
+        }
+        bool searchWord(string word){
+            return searchUtil(root, word);
         }
 };
 
 int main(){
     Trie* t=new Trie();
     t->insertWord("abcde");
-
+    cout<<t->searchWord("abcde");
     return 0;
 }
