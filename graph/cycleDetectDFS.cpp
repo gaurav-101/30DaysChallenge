@@ -1,5 +1,4 @@
 bool isCycle(int node, int parent, unordered_map<int, bool> &visited, unordered_map<int, list<int>> &adj){
-    
     visited[node]=1;
     
     for(auto i:adj[node]){
