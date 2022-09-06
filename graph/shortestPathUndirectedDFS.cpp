@@ -9,6 +9,8 @@ vector<int> shortestPath( vector<pair<int,int>> edges , int n , int m, int s , i
         adj[v].push_back(u);
     }
 	
+
+    // do bfs
     unordered_map<int, bool> visited;
     unordered_map<int, int> parent;
     
@@ -28,7 +30,7 @@ vector<int> shortestPath( vector<pair<int,int>> edges , int n , int m, int s , i
         }
     }
 
-    
+    //prepare shortest path
     vector<int> ans;
     int temp=t;
     ans.push_back(temp);
