@@ -1,4 +1,5 @@
-//Method - 3
+//Method - 3 
+// space optimisation
 int solve(vector<int> cost, int N){
     
     int prev1=0;
@@ -17,6 +18,7 @@ int minCostClimbingStairs(vector<int>&cost ,int N) {
 
 
 //Method - 2
+// Tabulation
 int solve(vector<int> cost, int N, vector<int> &dp){
     
     dp[0]=0;
@@ -33,6 +35,7 @@ int minCostClimbingStairs(vector<int>&cost ,int N) {
 }
 
 // Method-1
+// Recursion and memoisation
 int solve(vector<int> cost ,int i, int N, vector<int> &dp){
     if(i>=N){
         return 0;
