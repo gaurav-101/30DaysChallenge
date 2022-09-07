@@ -1,3 +1,19 @@
+//Method - 2
+int solve(vector<int> cost, int N, vector<int> &dp){
+    
+    dp[0]=0;
+    dp[1]=0;
+    for(int i=2; i<=N ; i++){
+        dp[i]=min(dp[i-1]+cost[i-1], dp[i-2]+cost[i-2]);
+    }
+    return dp[N];
+}
+
+int minCostClimbingStairs(vector<int>&cost ,int N) {
+    vector<int> dp(N+1, -1);
+    return solve(cost, N, dp);
+}
+
 // Method-1
 int solve(vector<int> cost ,int i, int N, vector<int> &dp){
     if(i>=N){
@@ -16,4 +32,4 @@ int minCostClimbingStairs(vector<int>&cost ,int N) {
     return min(solve(cost,0, N, dp), solve(cost, 1, N, dp));
 }
 
-//Method - 2
+
