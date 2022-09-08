@@ -1,3 +1,32 @@
+//method-4
+// space optimisation
+int solve(vector<int> &nums){
+    int n=nums.size();
+    int next1=0;
+    int next2=0;
+    
+    for(int i=n-1; i>=0; i--){
+        // take
+        int sum1=nums[i] + next2;
+        // not take
+        int sum2=next1;
+        
+        int curr=max(sum1, sum2);
+        
+        next2=next1;
+        next1=curr;
+    }
+    
+    return next1;
+}
+
+
+int maximumNonAdjacentSum(vector<int> &nums){
+    int n=nums.size();
+    return solve(nums);
+}
+
+
 //method-3
 //tabulation
 int solve(vector<int> &nums, vector<int>& dp){
