@@ -1,5 +1,5 @@
-//method-2
-//recursion and memoization
+//method-3
+//tabulation
 int solve(vector<int> &nums, vector<int>& dp){
     int n=nums.size();
     dp[n]=0;
@@ -21,6 +21,32 @@ int maximumNonAdjacentSum(vector<int> &nums){
     int n=nums.size();
     vector<int> dp(n+2, -1);
     return solve(nums, dp);
+}
+
+//method-2
+//recursion and memoization
+int solve(vector<int> &nums, int index, vector<int>& dp){
+    if(index>=nums.size()){
+        return 0;
+    }
+    
+    if(dp[index]!=-1){
+        return dp[index];
+    }
+    // take
+    int sum1=nums[index] + solve(nums, index + 2, dp);
+    
+    //not taken
+    int sum2=solve(nums, index + 1, dp);
+    
+    return dp[index]=max(sum1, sum2);
+}
+
+
+int maximumNonAdjacentSum(vector<int> &nums){
+    int n=nums.size();
+    vector<int> dp(n, -1);
+    return solve(nums,0, dp);
 }
 
 //method-1 
