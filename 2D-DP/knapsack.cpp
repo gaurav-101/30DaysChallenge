@@ -1,3 +1,42 @@
+// Method-4 Space Optimisation
+int solve(int wt[], int val[], int n, int capacity){
+    
+    // vector<vector<int>> dp(n, vector<int>(capacity+1, 0));
+    
+    vector<int> prev (capacity+1, 0);
+    vector<int> curr (capacity+1, 0);
+    
+    for(int w=wt[0]; w<=capacity; w++){
+        if(wt[0]<=capacity){
+            prev[w]=val[0];
+        }
+        else{
+            prev[w]=0;
+        }
+    }
+    
+    for(int index=1; index<n; index++){
+        for(int w=0; w<=capacity; w++){
+            int include=0;
+            if(wt[index]<=w){
+                include=val[index] + prev[w- wt[index] ];
+            }
+            
+            int exclude=prev[w];
+
+            curr[w]=max(include, exclude);
+        }
+        prev=curr;
+    }
+    
+    return prev[capacity]; 
+}
+
+int knapSack(int w, int wt[], int val[], int n) 
+{ 
+    return solve(wt, val, n, w);
+}
+
 // Method-3 tabulation
 int solve(int wt[], int val[], int n, int capacity){
     
