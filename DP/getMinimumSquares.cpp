@@ -1,3 +1,26 @@
+// Method-2 tabulation 
+int solve(int n){
+    vector<int> dp(n+1, INT_MAX);
+    
+    dp[0]=0;
+    
+    for(int j=1; j<=n; j++){
+        for(int i=1; i*i <= n; i++){
+            int temp=i*i;
+            if(j-temp>=0)
+                dp[j] = min(dp[j], 1+ dp[j-temp] );
+        }
+    }
+    return dp[n];
+}
+int MinSquares(int n)
+{
+    
+    return solve(n);
+}
+
+
+// Method-1
 int solve(int n, vector<int> &dp){
     if(n==0){
         return 0;
